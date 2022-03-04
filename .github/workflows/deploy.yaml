@@ -10,6 +10,9 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     steps:
+    - name: Install mkdocs
+      run: |
+        pip3 install mkdocs mkdocs-material
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build Site

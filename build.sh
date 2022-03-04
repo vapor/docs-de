@@ -1,5 +1,5 @@
 cd docs;
-mkdocs build
+mkdocs build;
 cd ..;
 
 rm -rf site
