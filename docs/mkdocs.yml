@@ -57,7 +57,7 @@ nav:
 - Willkommen: "index.md"
 - Installieren:
   - macOS: "install/macos.md"
-  - Linux: "install/linux.md"
+  - Linux: "installation/linux.md"
 - Erste Schritte:
   - Hallo, Welt: "hallo-welt.md"
   - Folder Structure: "folder-structure.md"
