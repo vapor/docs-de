@@ -53,7 +53,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.DOCS_DEPLOYER_AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.DOCS_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'eu-west-2'
-        SOURCE_DIR: 'Output'
+        SOURCE_DIR: 'site'
       if: steps.clouddeploy.outcome == 'success'
     - name: Invalidate CloudFront
       uses: awact/cloudfront-action@master
