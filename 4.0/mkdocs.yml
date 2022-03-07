@@ -15,7 +15,7 @@ copyright: "Copyright &copy; Vapor Community"
 # Configuration
 theme:
   name: material
-  custom_dir: /theme/
+  custom_dir: theme/
 
   # Language
   language: en
@@ -24,8 +24,8 @@ theme:
     primary: black
     accent: blue
   
-  logo: /assets/logo.png
-  favicon: /assets/favicon.png
+  logo: assets/logo.png
+  favicon: assets/favicon.png
 
 # Customization 
 extra:
