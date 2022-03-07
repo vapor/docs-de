@@ -20,6 +20,15 @@ Resources:
       BucketName: !Ref 'S3BucketName'
       WebsiteConfiguration:
         IndexDocument: index.html
+        # Redirect
+        ErrorDocument: /4.0/404/index.html
+        RoutingRules:
+          - RoutingRuleCondition:
+              HttpErrorCodeReturnedEquals: '404'
+              KeyPrefixEquals: /
+            RedirectRule:
+              HostName: !Ref 'DomainName'
+              ReplaceKeyPrefixWith: 4.0/404/
   WebsiteCloudfront:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -35,6 +44,10 @@ Resources:
         # DefaultRootObject: index.html
         Aliases:
         - !Ref 'DomainName'
+        CustomErrorResponses:
+          - ErrorCode: 403
+            ResponseCode: 404
+            ResponsePagePath: /4.0/404/index.html
         DefaultCacheBehavior:
           AllowedMethods:
           - GET
