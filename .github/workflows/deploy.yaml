@@ -17,7 +17,13 @@ jobs:
       uses: actions/checkout@v2
     - name: Build Site
       run: |
-        sh build.sh
+        cd docs;
+        mkdocs build;
+        cd ..;
+        rm -rf site
+        mkdir -p site;
+        mv docs/site site/docs;
+        echo "<meta http-equiv=\"refresh\" content=\"0; url=/4.0/\">" > site/index.html;
     - name: Configure AWS credentials
       id: cred
       uses: aws-actions/configure-aws-credentials@v1
