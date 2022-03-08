@@ -1,14 +1,10 @@
 # Swift Package Manager
 
-The [Swift Package Manager](https://swift.org/package-manager/) (SPM) is used for building your project's source code and dependencies. Since Vapor relies heavily on SPM, it's a good idea to understand the basics of how it works.
+Über den [Swift Package Manager](https://www.swift.org/package-manager/) können verschiedene Pakete in einem Projekt zusammengefasst und eingebunden werden. Damit ist der Manager ähnlich zu anderen Lösungen, wie CocoaPods, Ruby gems oder NPM. Ein offizielles, zentrales Paketeregister gibt es allerdings nicht, daher greift der Manager stattdessen über Git auf die jeweiligen Pakete zu. 
 
-SPM is similar to Cocoapods, Ruby gems, and NPM. You can use SPM from the command line with commands like `swift build` and `swift test` or with compatible IDEs. However, unlike some other package managers, there is no central package index for SPM packages. SPM instead leverages URLs to Git repositories and versions dependencies using [Git tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging). 
+### Paketbeschreibung
 
-## Package Manifest
-
-The first place SPM looks in your project is the package manifest. This should always be located in the root directory of your project and named `Package.swift`.
-
-Take a look at this example Package manifest.
+Das Herzstück des Paketmanagers ist die Paketbeschreibung. Sie befindet sich im Hauptverzeichnis eines Paketes. Die Beschreibung beinhaltet unter anderem Angaben zu Swift-Tools, den Paketnamen, dem Paketinhalt und die Abhängigkeiten.
 
 ```swift
 // swift-tools-version:5.2
@@ -32,47 +28,35 @@ let package = Package(
         .testTarget(name: "AppTests", dependencies: ["App"])
     ]
 )
-
 ```
 
-Each part of the manifest is explained in the following sections.
+#### Swift-Tools
 
-### Tools Version
+Die erste Zeile in der Beschreibung deklariert die für das Paket notwendige Mindestversion von Swift. Je nach Versionsstand können sich die Beschreibungen unterscheiden!
 
-The very first line of a package manifest indicates the Swift tools version required. This specifies the minimum version of Swift that the package supports. The Package description API may also change between Swift versions, so this line ensures Swift will know how to parse your manifest. 
+#### Name
 
-### Package Name
+Der Parameter `Name` legt den Paketnamen fest.
 
-The first argument to `Package` is the package's name. If the package is public, you should use the last segment of the Git repo's URL as the name.
+#### Platforms
 
-### Platforms
+Der Parameter `Platforms` beschreibt für welche Systeme letzten Endes das Paket sein soll. Wenn z.B. als Plattform `.macOS(.v10.14)` angegeben wird, wird macOS Mojave oder neuer erwartet.
 
-The `platforms` array specifies which platforms this package supports. By specifying `.macOS(.v10_14)` this package requires macOS Mojave or greater. When Xcode loads this project, it will automatically set the minimum deployment version to 10.14 so that you can use all available APIs.
+#### Products
 
-### Products
+Der Parameter `Products` fasst die Targets zusammen.
 
-Products are targets that your package produces when built. In this package, there are two targets. A library and an executable. 
+#### Dependencies
 
-### Dependencies
+Dependencies sind Paketverweise, auf die das Paket aufbaut und daher für die Ausführung zwingend benötigt werden. Deshalb auch Abhängigkeiten genannt. Im Falle von Vapor, verweisen alle Vapor-Pakete auf die aktuelle Vapor-Version. Neben dem Vapor-Paketverweis, können weitere Verweise hinzugefügt werden.
 
-Dependencies are other SPM packages that your package relies on. All Vapor applications rely on the Vapor package, but you can add as many other dependencies as you want.
+#### Targets (Ziele)
 
-In the above example, you can see [vapor/vapor](https://github.com/vapor/vapor) version 4.0.0 or later is a dependency of this package. When you add a dependency to your package, you must next signal which [targets](#targets) depend on
-the newly available modules.
+Targets sind Module, Dateien oder Tests. Vapor-Anwendungen beinhalten bis zu drei Targets.
 
-### Targets
+### Ordnerstruktur
 
-Targets are all of the modules, executables, and tests that your package contains. Most Vapor apps will have three targets, although you can add as many as you like to organize your code. Each target declares which modules it depends on. You must add module names here in order to import them in your code. A target can depend on other targets in your project or any modules exposed by packages you've added to
-the [main dependencies](#dependencies) array.
-
-!!! tip
-    Executable targets (targets that contain a `main.swift` file) cannot be imported by other modules.
-    This is why Vapor has both an `App` and a `Run` target.
-    Any code you include in `App` can be tested in the `AppTests`.
-
-## Folder Structure
-
-Below is the typical folder structure for an SPM package.
+Die Ordnerstruktur eines Paketes sieht wie folgt aus:
 
 ```
 .
@@ -86,19 +70,12 @@ Below is the typical folder structure for an SPM package.
 └── Package.swift
 ```
 
-Each `.target` corresponds to a folder in the `Sources` folder. 
-Each `.testTarget` corresponds to a folder in the `Tests` folder.
+### Resolved-Datei
 
-## Package.resolved
+Bei der ersten Ausführung des Paketes wird automatisch im Hauptverzeichnis eine Datei namens `Package.resolved` angelegt. Die Resolved-Datei listet die angegeben Abhängigkeiten inklusive Versionsstand auf. Hier ist zu beachten, dass das Paket sich erstmal an den Vorgaben in der Resolved-Datei hält, selbst wenn es bereits einen neuen Versionstand einer Abhängigkeit gibt.
 
-The first time you build your project, SPM will create a `Package.resolved` file that stores the version of each dependency. The next time you build your project, these same versions will be used even if newer versions are available. 
+Die Resolved-Datei kann über die Menüpunkte *File* → *Swift Packages* → *Update To Latest Swift Package Versions* aktualisiert werden.
 
-To update your dependencies, run `swift package update`.
+### Xcode
 
-## Xcode
-
-If you are using Xcode 11 or greater, changes to dependencies, targets, products, etc will happen automatically whenever the `Package.swift` file is modified. 
-
-If you want to update to the latest dependencies, use File &rarr; Swift Packages &rarr; Update To Latest Swift Package Versions.
-
-You may also want to add the `.swiftpm` file to your `.gitignore`. This is where Xcode will store your Xcode project configuration.
+Veränderungen an der Paketbeschreibung werden in Xcode mit Speichern sofort umgesetzt.
