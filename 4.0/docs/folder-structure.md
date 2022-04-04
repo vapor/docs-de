@@ -1,6 +1,6 @@
-# Folder Structure
+# Ordnerstruktur
 
-Now that you've created, built, and run your first Vapor app, let's take a moment to familiarize you with Vapor's folder structure. The structure is based on [SPM](spm.md)'s folder structure, so if you've worked with SPM before it should be familiar. 
+Lass und einen Blick auf die Ordnerstruktur von Vapor werfen. Die Ordnersturktur von Vapor orentiert sich an der Orderstruktur des [Swift Package Managers](spm.md). Falls du schon mal mit dem SPM gearbeitet hast, sollte sie dir bekannt vorkommen.
 
 ```
 .
@@ -19,13 +19,9 @@ Now that you've created, built, and run your first Vapor app, let's take a momen
 └── Package.swift
 ```
 
-The sections below explain each part of the folder structure in more detail.
-
 ## Public
 
-This folder contains any public files that will be served by your app if `FileMiddleware` is enabled. This is usually images, style sheets, and browser scripts. For example, a request to `localhost:8080/favicon.ico` will check to see if `Public/favicon.ico` exists and return it.
-
-You will need to enable `FileMiddleware` in your `configure.swift` file before Vapor can serve public files.
+Der Ordner _Public_ beinhaltet alle öffentlich zugänglichen Dateien, die für deine Seite bzw. manche Seitenansichten benötigt werden wie z.B. Bilder (.jpeg, .png etc.), Stylesheets (.css) oder auch Skripte (.js). Damit Vapor auf den Ordner zugreifen kann muss eine sogenannte `FileMiddleware` in der Datei `configure.swift` mitangegeben werden.
 
 ```swift
 // Serves files from `Public/` directory
@@ -37,25 +33,23 @@ app.middleware.use(fileMiddleware)
 
 ## Sources
 
-This folder contains all of the Swift source files for your project. 
-The top level folders, `App` and `Run`, reflect your package's modules, 
-as declared in the [SPM](spm.md) manifest.
+Der Ordner _Sources_ beinhaltet alle Programmdateien des Projektes. Die Unterordner _App_ und _Run_ stellen Paketmodule dar. Mehr dazu findest du im Abschnitt [Swift Package Manager](spm.md).
 
 ### App
 
-This is where all of your application logic goes. 
+Der Ordner _App_ beinhaltet die Programmlogik.
 
 #### Controllers
 
-Controllers are great way of grouping together application logic. Most controllers have many functions that accept a request and return some sort of response.
+Mittels _Controller_ kannst du deinen Code strukturieren und in deinem Projekt für Übersicht sorgen. Ein Controller kann ein oder mehrere Methoden besitzen, die grunsätzlich dazu da sind die (Web)Anfragen entgegenzunehmen und ein enstprechendes Ergebnis zurückzuliefern. Mehr dazu findest du im Abschnitt [Controllers](controllers.md).
 
 #### Migrations
 
-The migrations folder is where your database migrations go if you are using Fluent.
+Der Ordner _Migrations_ beinhaltet die Tabellendefinitionen deiner Datebank, solltest du _Fluent_ verwenden.
 
 #### Models
 
-The models folder is a great place to store your `Content` structs or Fluent `Model`s.
+Der Ordner _Models_ beinhaltet mögliche Klassendefinitionen für deine Model oder Entitäten.
 
 #### configure.swift
 
