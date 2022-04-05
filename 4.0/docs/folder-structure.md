@@ -21,7 +21,7 @@ Lass uns einen Blick auf die Ordnerstruktur von Vapor werfen. Die Ordnerstruktur
 
 ## Public
 
-Der Ordner _Public_ beinhaltet Dateien, die sozusagen mitveröffentlicht werden. Das können z.B. Dateien sein, die für die Seitendarstellung benötigt werden wie z.B. Bilder (.jpeg, .png etc.), Stylesheets (.css) oder auch Skripte (.js). Damit Vapor während der Ausführung auf den Ordner zugreifen kann muss eine sogenannte _FileMiddleware_ in der Datei `configure.swift` mitangegeben werden.
+Der Ordner _Public_ beinhaltet Dateien, die sozusagen mitveröffentlicht werden. Das können Dateien sein, die für die Seitendarstellung benötigt werden wie z.B. Bilder, Stylesheets (.css) oder auch Skripte (.js). Damit Vapor während der Ausführung auf den Ordner zugreifen kann muss eine _FileMiddleware_ in der Datei `configure.swift` mitangegeben werden.
 
 ```swift
 // Serves files from `Public/` directory
@@ -33,7 +33,7 @@ app.middleware.use(fileMiddleware)
 
 ## Sources
 
-Im Ordner _Sources_ befinden sich die Anwendungsdateien des Projektes. Die Unterordner _App_ und _Run_ stellen die Paketmodule dar. Mehr dazu findest du im Abschnitt [Swift Package Manager](spm.md).
+Im Ordner _Sources_ befinden sich die Anwendungsdateien. Die Unterordner _App_ und _Run_ stellen die Paketmodule dar. Mehr dazu findest du im Abschnitt [Swift Package Manager](spm.md).
 
 ### App
 
@@ -53,19 +53,19 @@ Der Ordner _Models_ beinhaltet mögliche Klassendefinitionen für deine Model od
 
 #### configure.swift
 
-Die Datei beinhaltet die Methode `configure(_:)`. Die Methode wird von der Datei `main.swift` aufgerufen um deine Anwendung mit den möglichen Angaben zu den Endpunkten, zur Datenbank oder zu Providern in der Methode zu konfigurieren.
+Die Datei _configure.swift_ umfasst die Methode `configure(_:)`. Sie wird in der Datei `main.swift` aufgerufen um die Anwendung mit entsprechenden Angaben zu Endpunkten, zur Datenbank oder zu Providern zu konfigurieren.
 
 #### routes.swift
 
-Die Datei beinhaltet die Methode `routes(_:)`. Sie wird am Ende von der `configure(_:)`-Methode aufgerufen um die Anwendungsendpunkte zu registrieren. 
+Die Datei _routes.swift_ beinhaltet die Methode `routes(_:)`. Sie wird am Ende von der `configure(_:)`-Methode aufgerufen um die Endpunkte zu registrieren. 
 
 ### Run
 
-Der Ordner _Run_ stellt das Ausführungsziel dar.
+Der Ordner _Run_ stellt die Ausführungsdatei dar.
 
 #### main.swift
 
-This file creates and runs a configured instance of your Vapor `Application`.
+Die Datei _main.swift_ erstellt eine Instanz der Anwendung und führt diese aus.
 
 ## Tests
 
