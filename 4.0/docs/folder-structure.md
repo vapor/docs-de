@@ -1,6 +1,6 @@
 # Ordnerstruktur
 
-Lass und einen Blick auf die Ordnerstruktur von Vapor werfen. Die Ordnersturktur von Vapor orentiert sich an der Orderstruktur des [Swift Package Managers](spm.md). Falls du schon mal mit dem SPM gearbeitet hast, sollte sie dir bekannt vorkommen.
+Lass uns einen Blick auf die Ordnerstruktur von Vapor werfen. Die Ordnerstruktur von Vapor orientiert sich an den Vorgaben des [Swift Package Managers](spm.md). Falls du schon mal mit dem SPM gearbeitet hast, sollte dir die Struktur bekannt vorkommen.
 
 ```
 .
@@ -21,7 +21,7 @@ Lass und einen Blick auf die Ordnerstruktur von Vapor werfen. Die Ordnersturktur
 
 ## Public
 
-Der Ordner _Public_ beinhaltet alle öffentlich zugänglichen Dateien, die für deine Seite bzw. manche Seitenansichten benötigt werden wie z.B. Bilder (.jpeg, .png etc.), Stylesheets (.css) oder auch Skripte (.js). Damit Vapor auf den Ordner zugreifen kann muss eine sogenannte `FileMiddleware` in der Datei `configure.swift` mitangegeben werden.
+Der Ordner _Public_ beinhaltet Dateien, die sozusagen mitveröffentlicht werden. Das können z.B. Dateien sein, die für die Seitendarstellung benötigt werden wie z.B. Bilder (.jpeg, .png etc.), Stylesheets (.css) oder auch Skripte (.js). Damit Vapor während der Ausführung auf den Ordner zugreifen kann muss eine sogenannte _FileMiddleware_ in der Datei `configure.swift` mitangegeben werden.
 
 ```swift
 // Serves files from `Public/` directory
@@ -33,19 +33,19 @@ app.middleware.use(fileMiddleware)
 
 ## Sources
 
-Der Ordner _Sources_ beinhaltet alle Programmdateien des Projektes. Die Unterordner _App_ und _Run_ stellen Paketmodule dar. Mehr dazu findest du im Abschnitt [Swift Package Manager](spm.md).
+Im Ordner _Sources_ befinden sich die Anwendungsdateien des Projektes. Die Unterordner _App_ und _Run_ stellen die Paketmodule dar. Mehr dazu findest du im Abschnitt [Swift Package Manager](spm.md).
 
 ### App
 
-Der Ordner _App_ beinhaltet die Programmlogik.
+Der Ordner _App_ beinhaltet die Anwendungslogik.
 
 #### Controllers
 
-Mittels _Controller_ kannst du deinen Code strukturieren und in deinem Projekt für Übersicht sorgen. Ein Controller kann ein oder mehrere Methoden besitzen, die grunsätzlich dazu da sind die (Web)Anfragen entgegenzunehmen und ein enstprechendes Ergebnis zurückzuliefern. Mehr dazu findest du im Abschnitt [Controllers](controllers.md).
+Der Ordner _Controllers_ beinhaltet die Endpunktdefinitionen der Anwendung. Mehr dazu findest du im Abschnitt [Controllers](controllers.md).
 
 #### Migrations
 
-Der Ordner _Migrations_ beinhaltet die Tabellendefinitionen deiner Datebank, solltest du _Fluent_ verwenden.
+Der Ordner _Migrations_ beinhaltet die Tabellendefinitionen der Datebank.
 
 #### Models
 
@@ -53,15 +53,15 @@ Der Ordner _Models_ beinhaltet mögliche Klassendefinitionen für deine Model od
 
 #### configure.swift
 
-This file contains the `configure(_:)` function. This method is called by `main.swift` to configure the newly created `Application`. This is where you should register services like routes, databases, providers, and more. 
+Die Datei beinhaltet die Methode `configure(_:)`. Die Methode wird von der Datei `main.swift` aufgerufen um deine Anwendung mit den möglichen Angaben zu den Endpunkten, zur Datenbank oder zu Providern in der Methode zu konfigurieren.
 
 #### routes.swift
 
-This file contains the `routes(_:)` function. This method is called near the end of `configure(_:)` to register routes to your `Application`. 
+Die Datei beinhaltet die Methode `routes(_:)`. Sie wird am Ende von der `configure(_:)`-Methode aufgerufen um die Anwendungsendpunkte zu registrieren. 
 
 ### Run
 
-This is the main executable target, containing just the code needed to get your application up and running.
+Der Ordner _Run_ stellt das Ausführungsziel dar.
 
 #### main.swift
 
