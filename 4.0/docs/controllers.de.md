@@ -7,6 +7,8 @@ Mit Controllers kannst du deinen Code strukturieren und in deinem Projekt für O
 Das folgende Beispiel zeigt einen möglichen Aufbau eines Controllers:
 
 ```swift
+/// [TodoController.swift]
+
 import Vapor
 
 struct TodosController: RouteCollection {
@@ -50,7 +52,7 @@ struct TodosController: RouteCollection {
 }
 ```
 
-Die Methoden sollten immer ein Object vom Typ `Request` annehmen und ein Wert von Typ `ResponseEncodable` zurückgegeben. Dabei kann die Methode sowohl asynchron (siehe im Beispiel Punkt [1]), als auch synchron (siehe im Beispiel, Punkt [2]) ausgeführt werden.
+Die Methoden sollten immer ein Object vom Typ _Request_ annehmen und ein Wert von Typ _ResponseEncodable_ zurückgegeben. Dabei kann die Methode sowohl asynchron (siehe im Beispiel Punkt [1]), als auch synchron (siehe im Beispiel, Punkt [2]) ausgeführt werden.
 
 ### Register
 
