@@ -1,11 +1,6 @@
 # Hallo Welt!
 
-Die Anleitung erklärt Schritt für Schritt, wie du ein Vapor-Projekt erstellst und ausführst.
-
-Sollte dir "Swift" oder die "Vapor Toolbox" noch fehlen, werfe zuerst einen Blick in die folgenden Abschnitte:
-
-- [Installation &rarr; macOS](install/macos.md)
-- [Installation &rarr; Linux](install/linux.md)
+In diesem Abschnitt erklären wir dir Schritt für Schritt, wie du ein Vapor-Projekt erstellst und ausführst. Sollte dir _Swift_ oder die _Vapor Toolbox_ noch fehlen, werfe zuerst einen Blick in die beiden Abschnitte [Installation &rarr; macOS](install/macos.md) und [Installation &rarr; Linux](install/linux.md).
 
 
 ## Projekt erstellen
@@ -16,13 +11,15 @@ Starte die Terminal-App auf deinem Mac und führe den Toolbox-Befehl aus. Der Be
 vapor new hello -n
 ```
 
-Sobald der Befehl durchgelaufen ist, wechsele in den neu erstellten Projektordner mit dem Befehl
+Sobald der Befehl durchgelaufen ist, wechsele in den neuen Ordner mit dem Befehl
 
 ```sh
 cd hello
 ``` 
 
 ## Projekt ausführen
+
+Je nach System oder Entwicklungsumgebung muss das Projekt unterschiedlich ausgeführt werden:
 
 ### mit Xcode
 
@@ -32,11 +29,7 @@ cd hello
 open Package.swift
 ```
 
-Xcode öffnet sich und lädt zu Beginn die Paketverweise. Nach dem Laden sollte dir Xcode zur Verfügung stehen.
-
-Wähle anschließend in der Mitte eine Schema (oft einfach nur "Mein Mac") aus. Starte nun das Projekt über die Menüpunkte "Produkt" > "Starten".
-
-Du solltest nun in der Konsole einen Eintrag wie diesen sehen:
+Xcode öffnet sich und lädt zu Beginn alle notwendigen Paketverweise. Nach dem Laden sollte dir Xcode zur Verfügung stehen. Wähle anschließend in der Mitte eine Schema (oft einfach nur "My Mac") aus. Starte nun das Projekt über die Menüpunkte _Product_ > _Run_. Du solltest nun in der Konsole einen Eintrag wie diesen sehen:
 
 ```sh
 [ INFO ] Server starting on http://127.0.0.1:8080
@@ -44,7 +37,7 @@ Du solltest nun in der Konsole einen Eintrag wie diesen sehen:
 
 ### mit Linux
 
-Für Linux und andere Distributionen (oder falls du einfach kein Xcode verwendest) kannst du den Editor deiner Wahl nutzen, wie z.B. Vim oder VSCode. Mehr Informationen hierzu findest du unter [Swift Server Guides](https://github.com/swift-server/guides/blob/main/docs/setup-and-ide-alternatives.md).
+Für Linux-Distributionen (oder falls du einfach kein Xcode verwendest) kannst du den Editor deiner Wahl nutzen, wie z.B. Vim oder VSCode. Mehr Informationen dazu, findest du im Abschnitt [Swift Server Guides](https://github.com/swift-server/guides/blob/main/docs/setup-and-ide-alternatives.md).
 
 Starte das Projekt mit dem Befehl
 
@@ -60,12 +53,6 @@ Bei der Erstausführung werden die Paketverweise nachgeladen. Dementsprechend ka
 
 ## Aufruf im Browser
 
-Rufe die Seite über den Link <a href="http://localhost:8080/hello" target="_blank">localhost:8080/hello</a> oder <a href="http://127.0.0.1:8080" target="_blank">http://127.0.0.1:8080</a> im Browser auf.
-
-Als Ergebnis solltest du "Hello World" im Browser sehen.
-
-```html
-Hello, world!
-```
+Rufe die Seite über den Link <a href="http://localhost:8080/hello" target="_blank">localhost:8080/hello</a> oder <a href="http://127.0.0.1:8080" target="_blank">http://127.0.0.1:8080</a> im Browser auf. Als Ergebnis sollte "Hello World" im Browser erscheinen.
 
 Das wars! Geschafft! Gratulation zur ersten Vapor-Anwendung. 🎉
