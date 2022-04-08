@@ -7,6 +7,8 @@
 Das Herzstück des Paketmanagers ist die Paketbeschreibung. Sie befindet sich im Hauptverzeichnis eines Paketes. Die Beschreibung beinhaltet unter anderem Angaben zu Swift-Tools, den Paketnamen, dem Paketinhalt und die Abhängigkeiten.
 
 ```swift
+/// [Package.swift]
+
 // swift-tools-version:5.2
 import PackageDescription
 
@@ -30,27 +32,27 @@ let package = Package(
 )
 ```
 
-#### Swift-Tools
+#### - Swift-Tools
 
-Die erste Zeile in der Beschreibung deklariert die für das Paket notwendige Mindestversion von Swift. Je nach Versionsstand können sich die Beschreibungen unterscheiden!
+Die erste Zeile in der Beschreibung deklariert die für das Paket notwendige Mindestversion von Swift. Je nach Versionsstand können sich zudem die Paketbeschreibungen unterscheiden!
 
-#### Name
+#### - Name
 
-Der Parameter `Name` legt den Paketnamen fest.
+Der Parameter _Name_ legt den Paketnamen fest.
 
-#### Platforms
+#### - Platforms
 
-Der Parameter `Platforms` beschreibt für welche Systeme letzten Endes das Paket sein soll. Wenn z.B. als Plattform `.macOS(.v10.14)` angegeben wird, wird macOS Mojave oder neuer erwartet.
+Der Parameter _Platforms_ beschreibt für welche Systeme letzten Endes das Paket sein soll. Wenn z.B. als Plattform `.macOS(.v10.14)` angegeben wird, wird macOS Mojave oder neuer erwartet.
 
-#### Products
+#### - Products
 
-Der Parameter `Products` fasst die Targets zusammen.
+Der Parameter _Products_ fasst die Targets zusammen.
 
-#### Dependencies
+#### - Dependencies
 
 Dependencies sind Paketverweise, auf die das Paket aufbaut und daher für die Ausführung zwingend benötigt werden. Deshalb auch Abhängigkeiten genannt. Im Falle von Vapor, verweisen alle Vapor-Pakete auf die aktuelle Vapor-Version. Neben dem Vapor-Paketverweis, können weitere Verweise hinzugefügt werden.
 
-#### Targets (Ziele)
+#### - Targets
 
 Targets sind Module, Dateien oder Tests. Vapor-Anwendungen beinhalten bis zu drei Targets.
 
@@ -72,7 +74,7 @@ Die Ordnerstruktur eines Paketes sieht wie folgt aus:
 
 ### Resolved-Datei
 
-Bei der ersten Ausführung des Paketes wird automatisch im Hauptverzeichnis eine Datei namens `Package.resolved` angelegt. Die Resolved-Datei listet die angegeben Abhängigkeiten inklusive Versionsstand auf. Hier ist zu beachten, dass das Paket sich erstmal an den Vorgaben in der Resolved-Datei hält, selbst wenn es bereits einen neuen Versionstand einer Abhängigkeit gibt.
+Bei der ersten Ausführung des Paketes wird automatisch im Hauptverzeichnis eine Datei _Package.resolved_ erstellt. Die Datei listet die angegeben Abhängigkeiten inklusive Versionsstand auf. Hier ist zu beachten, dass das Paket sich erstmal an den Vorgaben in der Resolved-Datei hält, selbst wenn es bereits einen neuen Versionsstand einer Abhängigkeit gibt.
 
 Die Resolved-Datei kann über die Menüpunkte *File* → *Swift Packages* → *Update To Latest Swift Package Versions* aktualisiert werden.
 
