@@ -21,9 +21,9 @@ cd hello
 
 Je nach System oder Entwicklungsumgebung muss das Projekt unterschiedlich ausgeführt werden:
 
-### mit Xcode
+### - mit Xcode
 
-Öffne nun das Projekt mit dem Befehl
+Öffne das Projekt mit dem Befehl
 
 ```sh
 open Package.swift
@@ -35,7 +35,7 @@ Xcode öffnet sich und lädt zu Beginn alle notwendigen Paketverweise. Nach dem 
 [ INFO ] Server starting on http://127.0.0.1:8080
 ```
 
-### mit Linux
+### - mit Linux
 
 Für Linux-Distributionen (oder falls du einfach kein Xcode verwendest) kannst du den Editor deiner Wahl nutzen, wie z.B. Vim oder VSCode. Mehr Informationen dazu, findest du im Abschnitt [Swift Server Guides](https://github.com/swift-server/guides/blob/main/docs/setup-and-ide-alternatives.md).
 
