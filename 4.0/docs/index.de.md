@@ -1,22 +1,19 @@
-# Einstieg
+# Dokumentation
 
-In der Dokumentation geht es um Vapor. Vapor ist ein beliebtes Web-Framework, mit dem du beeindruckende Webseiten / APIs in Swift zu schreiben kannst.
+Die Dokumentation behandelt das beliebte Web-Framework _Vapor_. Mit Vapor kannst du beeindruckende Webseiten und APIs in _Swift_ schreiben.
 
-## Sprachen
+## Übersetzung
 
-- English [(docs.vapor.codes)](https://docs.vapor.codes)
-- 简体中文 [(cn.docs.vapor.codes)](https://cn.docs.vapor.codes)
-- Deutsch [(de.docs.vapor.codes)](https://de.docs.vapor.codes)
+Die deutsche Übersetzung richtet anhand der [englische Version](https://docs.vapor.codes). Sollte dennoch ein Abschnitt fehlen, kannst du auf die Version ausweichen oder uns einen Hinweis in _Discord_ geben. Wir bemühen uns die Dokumentation so aktuell wie möglich zu halten.
 
-## Erste Schritte
 
-Für die Installation, folge den Anweisungen im Abschnitt [Installation → macOS](installation/macos.md).
+## Einstieg
 
-Nach der Installation, folge den Anweisungen im Abschnitt [Erste Schritte → Hello, world](hallo-welt.md) um deine erste Vapor-Anwendungen zu erstellen.
+Für die Installation, folge den Anweisungen im Abschnitt [Installation → macOS](installation/macos.md). Nach der Installation, folge den Anweisungen [Erste Schritte → Hello, world](hallo-welt.md) um deine erste Vapor-Anwendungen zu erstellen.
 
 ## Hilfen
 
-Mehr Informationen zu Vapor findest du unter anderem hier:
+Mehr Informationen zum Web-Framework findest du unter anderem hier:
 
 | name           | description                                                  | link                                                             |
 |----------------|--------------------------------------------------------------|------------------------------------------------------------------|
@@ -30,4 +27,4 @@ Mehr Informationen zu Vapor findest du unter anderem hier:
 
 ## Authoren
 
-[Tanner Nelson](mailto:tanner@vapor.codes), [Logan Wright](mailto:logan@vapor.codes) und weitere Mitglieder der Vapor-Community.
+[Tanner Nelson](mailto:tanner@vapor.codes), [Logan Wright](mailto:logan@vapor.codes) und viele weitere Mitglieder der Vapor-Community.
