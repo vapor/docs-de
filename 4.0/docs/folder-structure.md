@@ -21,7 +21,7 @@ Lass uns einen Blick auf die Ordnerstruktur von Vapor werfen. Die Ordnerstruktur
 
 ## Public
 
-Der Ordner _Public_ beinhaltet Dateien, die sozusagen mitveröffentlicht werden. Das können Dateien für Seitendarstellung sein, wie z. B. Bilder, Stylesheets (.css) oder auch Skripte (.js). Damit Vapor während der Ausführung auf den Ordner zugreifen kann muss eine _FileMiddleware_ in der Datei `configure.swift` mitangegeben werden.
+Der Ordner _Public_ beinhaltet Dateien, die sozusagen mitveröffentlicht werden. Das können Dateien für die Seitendarstellung sein, wie z. B. Bilder, CSS/JS-Dateien sein. Damit Vapor während der Ausführung auf den Ordner zugreifen kann muss eine _FileMiddleware_ in der Datei `configure.swift` mitangegeben werden.
 
 ```swift
 // Serves files from `Public/` directory
@@ -69,7 +69,7 @@ Die Datei _main.swift_ erstellt eine Instanz der Anwendung und führt diese aus.
 
 ## Tests
 
-Für jedes Paketmodul kann ein entsprechender Ordner unter _Tests_ angelegt werden. This contains code built on the `XCTest` module for testing your package. Tests can be run using `swift test` on the command line or pressing ⌘+U in Xcode. 
+Für jedes Paketmodul kann ein entsprechender Ordner unter _Tests_ angelegt werden.
 
 ### AppTests
 
