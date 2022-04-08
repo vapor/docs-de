@@ -1,6 +1,6 @@
 # Controllers
 
-Mit Controllers kannst du deinen Code strukturieren und in deinem Projekt für Übersicht sorgen. Ein Controller kann ein oder mehrere Methoden besitzen, die grunsätzlich dazu da sind die (Web)Anfragen entgegenzunehmen und ein enstprechendes Ergebnis zurückzuliefern.
+Mit Controllers kannst du deinen Code strukturieren und in deinem Projekt für Ordnung sorgen. Ein Controller kann ein oder mehrere Methoden besitzen, die dazu da sind die Anfrage entgegenzunehmen und ein enstprechendes Ergebnis zurückzuliefern.
 
 ## Beispiel
 
@@ -54,7 +54,7 @@ Die Methoden sollten immer ein Object vom Typ `Request` annehmen und ein Wert vo
 
 ### Register
 
-Zum Schluss muss der Applikation noch der Controller bekannt gemacht werden.
+Zum Schluss muss der Anwendung noch der Controller in der Datei _routes.swift_ bekannt gemacht werden.
 
 ```swift
 /// [routes.swift]
