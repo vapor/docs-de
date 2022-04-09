@@ -1,12 +1,10 @@
 # Dokumentation
 
-Die deutsche Übersetzung der Dokumentation ist Moment in Bearbeitung und wird in Zukunft unter [de.docs.vapor.codes](https://de.docs.vapor.codes/) zu finden sein. 
-
-Bis zur Fertigstellung kannst du natürlich auf die Original-Dokumentation unter [docs.vapor.codes](https://docs.vapor.codes/) zurückgreifen.
+Die deutsche Übersetzung der Dokumentation ist Moment in Bearbeitung und wird in Zukunft unter [de.docs.vapor.codes](https://de.docs.vapor.codes/) zu finden sein. Bis zur Fertigstellung kannst du natürlich auf die Original-Dokumentation unter [docs.vapor.codes](https://docs.vapor.codes/) zurückgreifen.
 
 ## Fortschritt
 
-### Essential
+### - Essential
 
 | Datei              | Status         | Link                                            | 
 |--------------------|----------------|-------------------------------------------------| 
@@ -40,7 +38,7 @@ Bis zur Fertigstellung kannst du natürlich auf die Original-Dokumentation unter
 | websockets.md      | Offen          | []()                                            |  
 | xcode.md           | Offen          | []()                                            | 
 
-### Deploy
+### - Deploy
   
 | Datei          | Status | Link   | 
 |----------------|--------|--------| 
@@ -50,7 +48,7 @@ Bis zur Fertigstellung kannst du natürlich auf die Original-Dokumentation unter
 | ngix.md        | Offen  | []()   |
 | supervisor.md  | Offen  | []()   |
 
-### Fluent
+### - Fluent
 
 | Datei          | Status | Link   | 
 |----------------|--------|--------| 
@@ -63,14 +61,14 @@ Bis zur Fertigstellung kannst du natürlich auf die Original-Dokumentation unter
 | schema.md      | Offen  | []()   |
 | transaction.md | Offen  | []()   |
 
-### Install
+### - Install
 
 | Datei    | Status          | Link                                                | 
 |----------|-----------------|-----------------------------------------------------| 
 | linux.md | In Bearbeitung  | [linux.de.md](/4.0/docs/install/linux.de.md)        |
 | macos.md | In Bearbeitung  | [macos.de.md](/4.0/docs/install/macos.de.md)        |
 
-### Leaf
+### - Leaf
 
 | Datei              | Status | Link  | 
 |--------------------|--------|------ | 
@@ -78,7 +76,7 @@ Bis zur Fertigstellung kannst du natürlich auf die Original-Dokumentation unter
 | getting-started.md | Offen  | []()  |
 | overview.md.       | Offen  | []()  |
 
-### Redis
+### - Redis
 
 | Datei       | Status | Link  | 
 |-------------|--------|-------| 
