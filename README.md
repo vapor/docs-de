@@ -28,7 +28,7 @@ Die deutsche Übersetzung der Dokumentation ist Moment in Bearbeitung und wird i
 | passwords.md       | Offen          | []()                                            | 
 | queues.md          | Offen          | []()                                            | 
 | routing.md         | Offen          | []()                                            | 
-| server.md          | Offen          | []()                                            |  
+| server.md          | In Bearbeitung | [server.de.md](/4.0/docs/server.de.md)          |  
 | services.md        | Offen          | []()                                            |  
 | sessions.md        | Offen          | []()                                            |  
 | spm.md             | In Bearbeitung | [spm.de.md](/4.0/docs/spm.de.md)                |  
