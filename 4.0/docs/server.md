@@ -1,10 +1,10 @@
 # Server
 
-Vapor beinhaltet einen HTTP-Server auf Basis von [SwiftNIO](https://github.com/apple/swift-nio). Der Server unterstützt die Protokolle HTTP/1, HTTP/2, TLS (SSL). Ebenso unterstützt er WebSockets. Mehr dazu findest du im Abschnitt [WebSockets](websockets.md).
+Vapor enthält einen HTTP-Server auf Basis von [SwiftNIO](https://github.com/apple/swift-nio). Der Server unterstützt die Protokolle HTTP/1, HTTP/2 und Protokollerweiterungen wie [WebSockets](websockets.md).
 
-## Einrichtung
+## Einstellungen
 
-Der Server besitzt mehrere Einstellungen, die über _app.http.server_ eingerichtet oder verändert werden können.
+Die Einstellungen des Servers können über _app.http.server_ eingerichtet oder verändert werden.
 
 ### Servername
 
@@ -17,14 +17,7 @@ Der _Hostname_ ist die Bezeichnung des Servers. Standardmäßig lautet der Name 
 app.http.server.configuration.hostname = "dev.local"
 ```
 
-The server configuration's hostname can be overridden by passing the `--hostname` (`-H`) flag to the `serve` command or by passing the `hostname` parameter to `app.server.start(...)`. 
-
-```sh
-# Override configured hostname.
-vapor run serve --hostname dev.local
-```
-
-### Port
+### Serverport
 
 Der _Port_ ist die Portnummer des Servers. Der Standard-Port lautet "_8080_". 
 
@@ -33,17 +26,6 @@ Der _Port_ ist die Portnummer des Servers. Der Standard-Port lautet "_8080_".
 
 // Configure custom port.
 app.http.server.configuration.port = 1337
-```
-
-!!! info
-	`sudo` may be required for binding to ports less than `1024`. Ports greater than `65535` are not supported. 
-
-
-The server configuration's port can be overridden by passing the `--port` (`-p`) flag to the `serve` command or by passing the `port` parameter to `app.server.start(...)`. 
-
-```sh
-# Override configured port.
-vapor run serve --port 1337
 ```
 
 ### Backlog
@@ -167,37 +149,20 @@ Der Parameter _serverName_ legt das Feld _Server_ in der Kopfzeile einer Servera
 app.http.server.configuration.serverName = "vapor"
 ```
 
-## Serve Command
+## Funktionen
 
-Um den Server zu starten, kannst du Terminal-Befehl _serve_ verwenden. Der Befehl wird automatisch ausgeführt, wenn keine anderen Befehle angegeben werden.
-
-```swift
-vapor run serve
-```
-
-Es können folgende Parameter mitangegeben werden:
-
-| Name          	| Befehl         | Beschreibung                         		| 
-|-----------------------|----------------|------------------------------------------------------| 
-| hostname           	| -H             | Überschreibt den vordefinierten Hostname		| 
-| port           	| -p             | Überschreibt den vordefinierten Port			| 
-| bind           	| -b             | Überschreibt den vordefinierten Hostnamen und Port	|
-| help           	| --help         | Hilfe						|
-
-```swift
-vapor run serve -b 0.0.0.0:80
-```
-
-The `serve` command will listen for `SIGTERM` and `SIGINT` to gracefully shutdown the server. Use `ctrl+c` (`^c`) to send a `SIGINT` signal. When the log level is set to `debug` or lower, information about the status of graceful shutdown will be logged.
-
-## Manual Start
+### Start
 
 Der Server kann manuell gestartet werden.
 
 ```swift
 // Start Vapor's server.
 try app.server.start()
+```
 
+### Shutdown
+
+```swift
 // Request server shutdown.
 app.server.shutdown()
 
@@ -205,7 +170,26 @@ app.server.shutdown()
 try app.server.onShutdown.wait()
 ```
 
-## Servers
+## Befehle
+
+### Serve
+
+Um den Server zu starten, kannst du Terminal-Befehl _serve_ verwenden. Der Befehl wird automatisch ausgeführt, wenn keine anderen Befehle mitangegeben werden.
+
+```swift
+vapor run serve
+```
+
+Es können folgende Parameter mitangegeben werden:
+
+| Name          	| Befehl         | Beschreibung                         		| Beispiel 			| 
+|-----------------------|----------------|------------------------------------------------------|-------------------------------| 
+| hostname           	| -H             | Überschreibt den vordefinierten Hostname		| vapor run serve -H dev.local	|
+| port           	| -p             | Überschreibt den vordefinierten Port			| vapor run serve -p 1337	|
+| bind           	| -b             | Überschreibt den vordefinierten Hostnamen und Port	| vapor run serve -b 0.0.0.0:80	|
+| help           	| --help         | Hilfe						| vapor run serve --help	|
+
+## Hinweis
 
 Der Server von Vapor kann grundsätzlich ersetzt werden. Dazu muss der neue Server von Typ `Server` sein.
 
