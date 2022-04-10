@@ -1,19 +1,19 @@
 # Server
 
-Vapor beinhaltet einen HTTP-Server auf Basis von [SwiftNIO](https://github.com/apple/swift-nio). Der Server unterstützt die Protokolle HTTP/1, HTTP/2. Ebenso erlaubt er das Aktivieren von TLS (SSL) und unterstützt [WebSockets](websockets.md).
+Vapor beinhaltet einen HTTP-Server auf Basis von [SwiftNIO](https://github.com/apple/swift-nio). Der Server unterstützt die Protokolle HTTP/1, HTTP/2, TLS (SSL). Ebenso unterstützt er WebSockets. Mehr dazu findest du im Abschnitt [WebSockets](websockets.md).
 
 ## Einrichtung
 
 Der Server besitzt mehrere Einstellungen, die über _app.http.server_ eingerichtet oder verändert werden können.
 
-### Hostname
+### Servername
 
-Der _Hostname_ ist die Bezeichnung des Servers. Der Standard-Hostname lautet "_127.0.0.1_".
+Der _Hostname_ ist die Bezeichnung des Servers. Standardmäßig lautet der Name "_127.0.0.1_".
 
 ```swift
 /// [configure.swift]
 
-// custom hostname.
+// Configure custom hostname.
 app.http.server.configuration.hostname = "dev.local"
 ```
 
@@ -31,7 +31,7 @@ Der _Port_ ist die Portnummer des Servers. Der Standard-Port lautet "_8080_".
 ```swift
 /// [configure.swift]
 
-// custom port.
+// Configure custom port.
 app.http.server.configuration.port = 1337
 ```
 
@@ -59,7 +59,7 @@ app.http.server.configuration.backlog = 128
 
 ### Reuse Address
 
-Der Parameter _Reuse Adress_ `reuseAddress` allows for reuse of local addresses. Der Standardwert ist "_true_".
+Der Parameter _Reuse Adress_ allows for reuse of local addresses. Standardmäßig ist der Parameter aktiviert.
 
 ```swift
 /// [configure.swift]
@@ -70,7 +70,7 @@ app.http.server.configuration.reuseAddress = false
 
 ### TCP No Delay
 
-Der Parameter _TCP No Delay_ legt fest attempt to minimize TCP packet delay. Der Standardwert ist "_true_". 
+Mit Aktivieren des Parameters _TCP No Delay_ wird versucht die Paketverzögerung so gering wie möglich zu halten. Der Standardwert ist "_true_". 
 
 ```swift
 /// [configure.swift]
@@ -79,21 +79,18 @@ Der Parameter _TCP No Delay_ legt fest attempt to minimize TCP packet delay. Der
 app.http.server.configuration.tcpNoDelay = true
 ```
 
-### Response Compression
+### Antwortkomprimierung
 
-The `responseCompression` parameter controls HTTP response compression using gzip. The default is `.disabled`.
+Der Parameter _Response Compression_ controls HTTP response compression using gzip. Der Standardwert ist "_.disabled_".
 
 ```swift
 /// [configure.swift]
 
 // Enable HTTP response compression.
 app.http.server.configuration.responseCompression = .enabled
-```
 
-To specify an initial buffer capacity, use the `initialByteBufferCapacity` parameter.
-
-```swift
-.enabled(initialByteBufferCapacity: 1024)
+// Enable HTTP response compression with an initial buffer capacity
+app.http.server.configuration.responseCompression = .enabled(initialByteBufferCapacity: 1024)
 ```
 
 ### Request Decompression
@@ -101,15 +98,16 @@ To specify an initial buffer capacity, use the `initialByteBufferCapacity` param
 The `requestDecompression` parameter controls HTTP request decompression using gzip. The default is `.disabled`.
 
 ```swift
+/// [configure.swift]
+
 // Enable HTTP request decompression.
 app.http.server.configuration.requestDecompression = .enabled
-```
 
-To specify a decompression limit, use the `limit` parameter. The default is `.ratio(10)`.
+// Enable HTTP request decompression with size limit
+app.http.server.configuration.requestDecompression = .enabled(limit: .ratio(10))
 
-```swift
-// No decompression size limit
-.enabled(limit: .none)
+// Enable HTTP request decompression with no size limit
+app.http.server.configuration.requestDecompression = .enabled(limit: .none)
 ```
 
 Available options are:
@@ -131,7 +129,7 @@ app.http.server.configuration.supportPipelining = true
 
 ### Versions
 
-The `supportVersions` parameter controls which HTTP versions the server will use. By default, Vapor will support both HTTP/1 and HTTP/2 when TLS is enabled. Only HTTP/1 is supported when TLS is disabled. 
+Der Parameter _Support Versions_ legt fest, welche HTTP-Versionen vom Server verwendet werden soll. Wenn TLS aktiviert ist, unterstützt Vapor standardmäßig die beiden Protokolle HTTP/1 und HTTP/2. Sobald TLS deaktiviert wird, wird nur HTTP/1 unterstützt.
 
 ```swift
 // Disable HTTP/1 support.
@@ -140,9 +138,11 @@ app.http.server.configuration.supportVersions = [.two]
 
 ### TLS
 
-The `tlsConfiguration` parameter controls whether TLS (SSL) is enabled on the server. The default is `nil`. 
+Der Parameter _tlsConfiguration_ legt fest, ob für den Server TLS (SSL) aktiviert werden soll. Standardmäßig ist kein TLS angegeben. 
 
 ```swift
+/// [configure.swift]
+
 // Enable TLS.
 try app.http.server.configuration.tlsConfiguration = .forServer(
     certificateChain: NIOSSLCertificate.fromPEMFile("/path/to/cert.pem").map { .certificate($0) },
