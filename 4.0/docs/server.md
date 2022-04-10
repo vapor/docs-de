@@ -1,24 +1,19 @@
 # Server
 
-Vapor includes a high-performance, asynchronous HTTP server built on [SwiftNIO](https://github.com/apple/swift-nio). This server supports HTTP/1, HTTP/2, and protocol upgrades like [WebSockets](websockets.md). The server also supports enabling TLS (SSL).
+Vapor beinhaltet einen HTTP-Server auf Basis von [SwiftNIO](https://github.com/apple/swift-nio). Der Server unterstützt die Protokolle HTTP/1, HTTP/2. Ebenso erlaubt er das Aktivieren von TLS (SSL) und unterstützt [WebSockets](websockets.md).
 
-## Configuration
+## Einrichtung
 
-Vapor's default HTTP server can be configured via `app.http.server`. 
-
-```swift
-// Only support HTTP/2
-app.http.server.configuration.supportVersions = [.two]
-```
-
-The HTTP server supports several configuration options. 
+Der Server besitzt mehrere Einstellungen, die über _app.http.server_ eingerichtet oder verändert werden können.
 
 ### Hostname
 
-The hostname controls which address the server will accept new connections on. The default is `127.0.0.1`.
+Der _Hostname_ ist die Bezeichnung des Servers. Der Standard-Hostname lautet "_127.0.0.1_".
 
 ```swift
-// Configure custom hostname.
+/// [configure.swift]
+
+// custom hostname.
 app.http.server.configuration.hostname = "dev.local"
 ```
 
@@ -31,10 +26,12 @@ vapor run serve --hostname dev.local
 
 ### Port
 
-The port option controls which port at the specified address the server will accept new connections on. The default is `8080`. 
+Der _Port_ ist die Portnummer des Servers. Der Standard-Port lautet "_8080_". 
 
 ```swift
-// Configure custom port.
+/// [configure.swift]
+
+// custom port.
 app.http.server.configuration.port = 1337
 ```
 
@@ -51,27 +48,33 @@ vapor run serve --port 1337
 
 ### Backlog
 
-The `backlog` parameter defines the maximum length for the queue of pending connections. The default is `256`.
+Der Parameter _Backlog_ definiert die maximale Anzahl an ausstehenden Verbindungen zum Server. Der Standardwert lautet "_256_".
 
 ```swift
-// Configure custom backlog.
+/// [configure.swift]
+
+// custom backlog.
 app.http.server.configuration.backlog = 128
 ```
 
 ### Reuse Address
 
-The `reuseAddress` parameter allows for reuse of local addresses. Defaults to `true`.
+Der Parameter _Reuse Adress_ `reuseAddress` allows for reuse of local addresses. Der Standardwert ist "_true_".
 
 ```swift
+/// [configure.swift]
+
 // Disable address reuse.
 app.http.server.configuration.reuseAddress = false
 ```
 
 ### TCP No Delay
 
-Enabling the `tcpNoDelay` parameter will attempt to minimize TCP packet delay. Defaults to `true`. 
+Der Parameter _TCP No Delay_ legt fest attempt to minimize TCP packet delay. Der Standardwert ist "_true_". 
 
 ```swift
+/// [configure.swift]
+
 // Minimize packet delay.
 app.http.server.configuration.tcpNoDelay = true
 ```
@@ -81,6 +84,8 @@ app.http.server.configuration.tcpNoDelay = true
 The `responseCompression` parameter controls HTTP response compression using gzip. The default is `.disabled`.
 
 ```swift
+/// [configure.swift]
+
 // Enable HTTP response compression.
 app.http.server.configuration.responseCompression = .enabled
 ```
