@@ -1,10 +1,22 @@
-# Environment
+# Umgebung
 
-Vapor's Environment API helps you configure your app dynamically. By default, your app will use the `development` environment. You can define other useful environments like `production` or `staging` and change how your app is configured in each case. You can also load in variables from the process's environment or `.env` (dotenv) files depending on your needs.
+In Vapor gibt es mehrere Umgebungen mit denen du Einstellungen individuell vordefinieren kannst. Mit dem Wechsel der Umgebung ändert sich dann das Verhalten deiner Anwendung. Du kannst aber auch Werte direkt aus dem aktuellen Prozess abrufen oder aus einer .env-Datei laden.
 
-To access the current environment, use `app.environment`. You can switch on this property in `configure(_:)` to execute different configuration logic. 
+| Umgebung              | Kurzform   | Beschreibung                                |
+|-----------------------|------------|---------------------------------------------|
+| production            | prod       | Umgebung bei Veröffentlichung.              |
+| development (default) | dev        | Umgebung für Entwicklung.                   |
+| testing               | test       | Umgebung zum Testen.                        |
+
+Vapor nutzt standardmäßig die Umgebung _Development_.
+
+## Eigenschaft
+
+Du kannst über die Eigenschaft _Environment_ auf die laufenden Umgebung zugreifen oder zwischen den Umgebungen wechseln.
 
 ```swift
+/// [configure.swift]
+
 switch app.environment {
 case .production:
     app.databases.use(....)
@@ -13,32 +25,15 @@ default:
 }
 ```
 
-## Changing Environment
-
-By default, your app will run in the `development` environment. You can change this by passing the `--env` (`-e`) flag during app boot.
+## Wechsel
 
 ```swift
 vapor run serve --env production
 ```
 
-Vapor includes the following environments:
+## Umgebungsvariable
 
-|name|short|description|
-|-|-|-|
-|production|prod|Deployed to your users.|
-|development|dev|Local development.|
-|testing|test|For unit testing.|
-
-!!! info
-    The `production` environment will default to `notice` level logging unless otherwise specified. All other environments default to `info`. 
-
-You can pass either the full or short name to the `--env` (`-e`) flag.
-
-```swift
-vapor run serve -e prod
-```
-
-## Process Variables
+### Prozess
 
 `Environment` offers a simple, string-based API for accessing the process's environment variables.
 
@@ -63,7 +58,7 @@ vapor run serve
 
 When running your app in Xcode, you can set environment variables by editing the `Run` scheme.
 
-## .env (dotenv)
+### .env (dotenv)
 
 Dotenv files contain a list of key-value pairs to be automatically loaded into the environment. These files make it easy to configure environment variables without needing to set them manually.
 
