@@ -7,8 +7,7 @@ In Vapor gibt es mehrere Umgebungen mit denen du Einstellungen individuell vorde
 | production            | prod       | Umgebung bei Veröffentlichung.              |
 | development (default) | dev        | Umgebung für Entwicklung.                   |
 | testing               | test       | Umgebung zum Testen.                        |
-
-Vapor nutzt standardmäßig die Umgebung _Development_.
+| Vapor nutzt standardmäßig die Umgebung _Development_.                            |
 
 ## Eigenschaft
 
@@ -35,38 +34,37 @@ vapor run serve --env production
 
 ### Prozess
 
-`Environment` offers a simple, string-based API for accessing the process's environment variables.
+#### - Abrufen
+
+Die Klasse _Environment_ bietet die Methode *get(_: String)* an um einen Wert abzurufen.
 
 ```swift
 let foo = Environment.get("FOO")
 print(foo) // String?
 ```
 
-In addition to `get`, `Environment` offers a dynamic member lookup API via `process`.
+Zusätzlich kannst du den Wert aber auch dynamisch über die Eigenschaft _process_ abrufen.
 
 ```swift
 let foo = Environment.process.FOO
 print(foo) // String?
 ```
 
-When running your app in the terminal, you can set environment variables using `export`. 
+#### - Definieren
+
+In Xcode kannst du die eine Prozessvariable über das Schema _Run_ festlegen. Im Terminal benutze den Befehl _export_.
 
 ```sh
 export FOO=BAR
 vapor run serve
 ```
 
-When running your app in Xcode, you can set environment variables by editing the `Run` scheme.
-
 ### .env (dotenv)
 
-Dotenv files contain a list of key-value pairs to be automatically loaded into the environment. These files make it easy to configure environment variables without needing to set them manually.
-
-Vapor will look for dotenv files in the current working directory. If you're using Xcode, make sure to set the working directory by editing the `Run` scheme.
-
-Assume the following `.env` file placed in your projects root folder:
+Eine .env-Datei beinhaltet Schlüssel-Wert-Paare, welche entsprechend der Umgebung geladen werden. Auf dieser Art müssen die Umgebungsvariablen nicht manuell angelegt werden. Vapor lädt die Datei aus dem Arbeitsverzeichnis.
 
 ```sh
+# Key=Value
 FOO=BAR
 ```
 
