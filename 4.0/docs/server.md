@@ -70,7 +70,7 @@ app.http.server.configuration.reuseAddress = false
 
 ### TCP No Delay
 
-Mit Aktivieren des Parameters _TCP No Delay_ wird versucht die Paketverzögerung so gering wie möglich zu halten. Der Standardwert ist "_true_". 
+Mit Aktivieren des Parameters _TCP No Delay_ wird versucht die Paketverzögerung so gering wie möglich zu halten. Standardmäßig ist der Parameter aktiviert. 
 
 ```swift
 /// [configure.swift]
@@ -81,7 +81,7 @@ app.http.server.configuration.tcpNoDelay = true
 
 ### Antwortkomprimierung
 
-Der Parameter _Response Compression_ controls HTTP response compression using gzip. Der Standardwert ist "_.disabled_".
+Der Parameter _responseCompression_ legt die Komprimierung einer Serverantwort fest. Der Parameter ist standardmäßig deaktiviert. Für die Komprimierung wird Gzip verwendet.
 
 ```swift
 /// [configure.swift]
@@ -93,9 +93,9 @@ app.http.server.configuration.responseCompression = .enabled
 app.http.server.configuration.responseCompression = .enabled(initialByteBufferCapacity: 1024)
 ```
 
-### Request Decompression
+### Anfragedekomprimierung
 
-The `requestDecompression` parameter controls HTTP request decompression using gzip. The default is `.disabled`.
+Der Parameter _requestDecompression_ legt die Dekomprimierung einer Serveranfrage fest. Der Parameter ist standardmäßig deaktiviert. Für die Komprimierung wird Gzip verwendet.
 
 ```swift
 /// [configure.swift]
@@ -120,25 +120,29 @@ Setting decompression size limits can help prevent maliciously compressed HTTP r
 
 ### Pipelining
 
-The `supportPipelining` parameter enables support for HTTP request and response pipelining. The default is `false`. 
+Der Parameter _supportPipelining_ aktiviert die Unterstützung für HTTP-Pipeling. Der Parameter ist ständardmäßig deaktiviert. 
 
 ```swift
+/// [configure.swift]
+
 // Support HTTP pipelining.
 app.http.server.configuration.supportPipelining = true
 ```
 
 ### Versions
 
-Der Parameter _Support Versions_ legt fest, welche HTTP-Versionen vom Server verwendet werden soll. Wenn TLS aktiviert ist, unterstützt Vapor standardmäßig die beiden Protokolle HTTP/1 und HTTP/2. Sobald TLS deaktiviert wird, wird nur HTTP/1 unterstützt.
+Der Parameter _supportVersions_ legt fest, welche HTTP-Versionen vom Server verwendet werden soll. Wenn TLS aktiviert ist, unterstützt Vapor standardmäßig die beiden Protokolle HTTP/1 und HTTP/2. Sobald TLS deaktiviert wird, wird nur HTTP/1 unterstützt.
 
 ```swift
+/// [configure.swift]
+
 // Disable HTTP/1 support.
 app.http.server.configuration.supportVersions = [.two]
 ```
 
 ### TLS
 
-Der Parameter _tlsConfiguration_ legt fest, ob für den Server TLS (SSL) aktiviert werden soll. Standardmäßig ist kein TLS angegeben. 
+Der Parameter _tlsConfiguration_ legt fest, ob TLS (SSL) verwendet werden soll. Standardmäßig ist kein TLS angegeben. 
 
 ```swift
 /// [configure.swift]
@@ -154,61 +158,60 @@ For this configuration to compile you need to add `import NIOSSL` at the top of 
 
 ### Name
 
-The `serverName` parameter controls the `Server` header on outgoing HTTP responses. The default is `nil`.
+Der Parameter _serverName_ legt das Feld _Server_ in der Kopfzeile einer Serverantwort fest. Standardmäßig ist kein Name angegeben.
 
 ```swift
+/// [configure.swift]
+
 // Add 'Server: vapor' header to responses.
 app.http.server.configuration.serverName = "vapor"
 ```
 
 ## Serve Command
 
-To start up Vapor's server, use the `serve` command. This command will run by default if no other commands are specified. 
+Um den Server zu starten, kannst du Terminal-Befehl _serve_ verwenden. Der Befehl wird automatisch ausgeführt, wenn keine anderen Befehle angegeben werden.
 
 ```swift
 vapor run serve
 ```
 
-The `serve` command accepts the following parameters:
+Es können folgende Parameter mitangegeben werden:
 
-- `hostname` (`-H`): Overrides configured hostname.
-- `port` (`-p`): Overrides configured port.
-- `bind` (`-b`): Overrides configured hostname and port joined by `:`. 
-
-An example using the `--bind` (`-b`) flag:
+| Name          	| Befehl         | Beschreibung                         		| 
+|-----------------------|----------------|------------------------------------------------------| 
+| hostname           	| -H             | Überschreibt den vordefinierten Hostname		| 
+| port           	| -p             | Überschreibt den vordefinierten Port			| 
+| bind           	| -b             | Überschreibt den vordefinierten Hostnamen und Port	|
+| help           	| --help         | Hilfe						|
 
 ```swift
 vapor run serve -b 0.0.0.0:80
 ```
 
-Use `vapor run serve --help` for more information.
-
 The `serve` command will listen for `SIGTERM` and `SIGINT` to gracefully shutdown the server. Use `ctrl+c` (`^c`) to send a `SIGINT` signal. When the log level is set to `debug` or lower, information about the status of graceful shutdown will be logged.
 
 ## Manual Start
 
-Vapor's server can be started manually using `app.server`.
+Der Server kann manuell gestartet werden.
 
 ```swift
 // Start Vapor's server.
 try app.server.start()
+
 // Request server shutdown.
 app.server.shutdown()
+
 // Wait for the server to shutdown.
 try app.server.onShutdown.wait()
 ```
 
 ## Servers
 
-The server Vapor uses is configurable. By default, the built in HTTP server is used.
+Der Server von Vapor kann grundsätzlich ersetzt werden. Dazu muss der neue Server von Typ `Server` sein.
 
 ```swift
 app.servers.use(.http)
 ```
-
-### Custom Server
-
-Vapor's default HTTP server can be replaced by any type conforming to `Server`. 
 
 ```swift
 import Vapor
