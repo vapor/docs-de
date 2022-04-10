@@ -4,7 +4,7 @@ Die deutsche Übersetzung der Dokumentation ist Moment in Bearbeitung und wird i
 
 ## Fortschritt
 
-### - Essential
+### - General
 
 | Datei              | Status         | Link                                            | 
 |--------------------|----------------|-------------------------------------------------| 
