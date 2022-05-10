@@ -1,43 +1,45 @@
 # Dokumentation
 
-Die Dokumentation findest du auch unter [de.docs.vapor.codes](https://de.docs.vapor.codes/).
+Die deutsche Übersetzung der Dokumentation ist Moment in Bearbeitung und wird in Zukunft unter [de.docs.vapor.codes](https://de.docs.vapor.codes/) zu finden sein. Bis zur Fertigstellung kannst du natürlich auf die Original-Dokumentation unter [docs.vapor.codes](https://docs.vapor.codes/) zurückgreifen.
 
 ## Fortschritt
 
-| Datei              | Status         | Link                                 | 
-|--------------------|----------------|--------------------------------------| 
-| apns.md            | Offen          | []()                                 | 
-| async.md           | Offen          | []()                                 | 
-| authentication.md  | Offen          | []()                                 | 
-| client.md          | Offen          | []()                                 | 
-| commands.md        | Offen          | []()                                 | 
-| content.md         | Offen          | []()                                 | 
-| controllers.md     | Offen          | []()                                 | 
-| crypto.md          | Offen          | []()                                 | 
-| environment.md     | Offen          | []()                                 | 
-| errors.md          | Offen          | []()                                 | 
-| files.md           | Offen          | []()                                 | 
-| folder-structure.md| Offen          | []()                                 | 
-| hello-world.md     | In Bearbeitung | [hallo-welt.md](/docs/hallo-welt.md) | 
-| index.md           | In Bearbeitung | [index.md](/docs/index.md)           |
-| jwd.md             | Offen          | []()                                 | 
-| logging.md         | Offen          | []()                                 | 
-| middleware.md      | Offen          | []()                                 | 
-| passwords.md       | Offen          | []()                                 | 
-| queues.md          | Offen          | []()                                 | 
-| routing.md         | Offen          | []()                                 | 
-| server.md          | Offen          | []()                                 |  
-| services.md        | Offen          | []()                                 |  
-| sessions.md        | Offen          | []()                                 |  
-| spm.md             | Offen          | []()                                 |  
-| testing.md         | Offen          | []()                                 | 
-| upgrading.md       | Offen          | []()                                 | 
-| validation.md      | Offen          | []()                                 | 
-| websockets.md      | Offen          | []()                                 |  
-| xcode.md           | Offen          | []()                                 | 
+### - General
 
-### Deploy
+| Datei              | Status         | Link                                            | 
+|--------------------|----------------|-------------------------------------------------| 
+| apns.md            | Offen          | []()                                            | 
+| async.md           | Offen          | []()                                            | 
+| authentication.md  | Offen          | []()                                            | 
+| client.md          | Offen          | []()                                            | 
+| commands.md        | Offen          | []()                                            | 
+| content.md         | Offen          | []()                                            | 
+| controllers.md     | In Bearbeitung | [controllers.de.md](/4.0/docs/controllers.de.md)| 
+| crypto.md          | Offen          | []()                                            | 
+| environment.md     | Offen          | []()                                            | 
+| errors.md          | Offen          | []()                                            | 
+| files.md           | Offen          | []()                                            |   
+| folder-structure.md| Offen          | []()                                            | 
+| hello-world.md     | In Bearbeitung | [hello-world.de.md](/4.0/docs/hello-world.de.md)| 
+| index.md           | In Bearbeitung | [index.de.md](/4.0/docs/index.de.md)            |
+| jwd.md             | Offen          | []()                                            |  
+| logging.md         | Offen          | []()                                            | 
+| middleware.md      | Offen          | []()                                            | 
+| passwords.md       | Offen          | []()                                            | 
+| queues.md          | Offen          | []()                                            | 
+| routing.md         | Offen          | []()                                            | 
+| server.md          | In Bearbeitung | [server.de.md](/4.0/docs/server.de.md)          |  
+| services.md        | Offen          | []()                                            |  
+| sessions.md        | Offen          | []()                                            |  
+| spm.md             | In Bearbeitung | [spm.de.md](/4.0/docs/spm.de.md)                |  
+| testing.md         | Offen          | []()                                            | 
+| upgrading.md       | Offen          | []()                                            |  
+| validation.md      | Offen          | []()                                            | 
+| websockets.md      | Offen          | []()                                            |  
+| xcode.md           | Offen          | []()                                            | 
 
+### - Deploy
+  
 | Datei          | Status | Link   | 
 |----------------|--------|--------| 
 | digitalocean.md| Offen  | []()   |
@@ -46,7 +48,7 @@ Die Dokumentation findest du auch unter [de.docs.vapor.codes](https://de.docs.va
 | ngix.md        | Offen  | []()   |
 | supervisor.md  | Offen  | []()   |
 
-### Fluent
+### - Fluent
 
 | Datei          | Status | Link   | 
 |----------------|--------|--------| 
@@ -59,14 +61,14 @@ Die Dokumentation findest du auch unter [de.docs.vapor.codes](https://de.docs.va
 | schema.md      | Offen  | []()   |
 | transaction.md | Offen  | []()   |
 
-### Install
+### - Install
 
-| Datei    | Status          | Link                                     | 
-|----------|-----------------|------------------------------------------| 
-| linux.md | In Bearbeitung  | [linux.md](/docs/installation/linux.md)  |
-| macos.md | Offen           | []()                                     |
+| Datei    | Status          | Link                                                | 
+|----------|-----------------|-----------------------------------------------------| 
+| linux.md | In Bearbeitung  | [linux.de.md](/4.0/docs/install/linux.de.md)        |
+| macos.md | In Bearbeitung  | [macos.de.md](/4.0/docs/install/macos.de.md)        |
 
-### Leaf
+### - Leaf
 
 | Datei              | Status | Link  | 
 |--------------------|--------|------ | 
@@ -74,10 +76,9 @@ Die Dokumentation findest du auch unter [de.docs.vapor.codes](https://de.docs.va
 | getting-started.md | Offen  | []()  |
 | overview.md.       | Offen  | []()  |
 
-### Redis
+### - Redis
 
 | Datei       | Status | Link  | 
 |-------------|--------|-------| 
 | overview.md | Offen  | []()  |
 | sessions.md | Offen  | []()  |
-
