@@ -1,3 +1,5 @@
+> Note: This repo has been archived as we now do inline translations in the main docs repo
+
 # Dokumentation
 
 Die deutsche Übersetzung der Dokumentation ist Moment in Bearbeitung und wird in Zukunft unter [de.docs.vapor.codes](https://de.docs.vapor.codes/) zu finden sein. Bis zur Fertigstellung kannst du natürlich auf die Original-Dokumentation unter [docs.vapor.codes](https://docs.vapor.codes/) zurückgreifen.
